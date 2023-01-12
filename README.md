@@ -44,3 +44,11 @@ reth/target/release/reth db list --start=1 --len=2 Headers
 1. Run `docker-compose down`
 
 The volumes will persist across restarts, so you can start and stop the node as needed.
+
+---
+
+## Acknowledgements
+
+The Reth repo / binary in use here is maintained at https://github.com/paradigmxyz/reth
+
+The Prometheus + Grafana docker-compose stack is taken from https://github.com/vegasbrianc/prometheus
