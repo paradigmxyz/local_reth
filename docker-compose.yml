@@ -20,30 +20,30 @@ services:
   prometheus:
     restart: always
     image: prom/prometheus
+    user: root
     depends_on:
       - reth
     ports:
       - 9090:9090
     volumes:
       - ./prometheus/:/etc/prometheus/
-      - prometheusdata:$HOME/prometheusdata
+      - prometheusdata:/prometheusdata
     command:
       - '--config.file=/etc/prometheus/prometheus.yml'
-      - '--storage.tsdb.path=$HOME/prometheusdata'
-    # networks (?)
+      - '--storage.tsdb.path=/prometheusdata'
 
   grafana:
     restart: always
     image: grafana/grafana
+    user: '472'
     depends_on:
       - reth
       - prometheus
     ports:
       - 3000:3000
     volumes:
-      - grafanadata:$HOME/grafanadata
+      - grafanadata:/var/lib/grafanadata
       - ./grafana/provisioning/:/etc/grafana/provisioning/
-    # networks (?)
 
 volumes:
   rethdata:

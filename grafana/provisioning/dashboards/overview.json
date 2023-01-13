@@ -1,47 +1,4 @@
 {
-    "__inputs": [
-      {
-        "name": "DS_PROMETHEUS",
-        "label": "Prometheus",
-        "description": "",
-        "type": "datasource",
-        "pluginId": "prometheus",
-        "pluginName": "Prometheus"
-      }
-    ],
-    "__elements": {},
-    "__requires": [
-      {
-        "type": "panel",
-        "id": "gauge",
-        "name": "Gauge",
-        "version": ""
-      },
-      {
-        "type": "grafana",
-        "id": "grafana",
-        "name": "Grafana",
-        "version": "9.3.2"
-      },
-      {
-        "type": "datasource",
-        "id": "prometheus",
-        "name": "Prometheus",
-        "version": "1.0.0"
-      },
-      {
-        "type": "panel",
-        "id": "stat",
-        "name": "Stat",
-        "version": ""
-      },
-      {
-        "type": "panel",
-        "id": "timeseries",
-        "name": "Time series",
-        "version": ""
-      }
-    ],
     "annotations": {
       "list": [
         {
@@ -67,15 +24,11 @@
     "editable": true,
     "fiscalYearStartMonth": 0,
     "graphTooltip": 0,
-    "id": null,
     "links": [],
     "liveNow": false,
     "panels": [
       {
-        "datasource": {
-          "type": "prometheus",
-          "uid": "${DS_PROMETHEUS}"
-        },
+        "datasource": "Prometheus",
         "fieldConfig": {
           "defaults": {
             "color": {
@@ -129,10 +82,7 @@
         "pluginVersion": "9.3.2",
         "targets": [
           {
-            "datasource": {
-              "type": "prometheus",
-              "uid": "${DS_PROMETHEUS}"
-            },
+            "datasource": "Prometheus",
             "editorMode": "builder",
             "exemplar": false,
             "expr": "reth_network_connected_peers",
@@ -147,10 +97,7 @@
         "type": "gauge"
       },
       {
-        "datasource": {
-          "type": "prometheus",
-          "uid": "${DS_PROMETHEUS}"
-        },
+        "datasource": "Prometheus",
         "description": "",
         "fieldConfig": {
           "defaults": {
@@ -198,10 +145,7 @@
         "pluginVersion": "9.3.2",
         "targets": [
           {
-            "datasource": {
-              "type": "prometheus",
-              "uid": "${DS_PROMETHEUS}"
-            },
+            "datasource": "Prometheus",
             "editorMode": "builder",
             "exemplar": false,
             "expr": "reth_stage_progress",
@@ -229,10 +173,7 @@
         "type": "row"
       },
       {
-        "datasource": {
-          "type": "prometheus",
-          "uid": "${DS_PROMETHEUS}"
-        },
+        "datasource": "Prometheus",
         "fieldConfig": {
           "defaults": {
             "color": {
@@ -306,10 +247,7 @@
         },
         "targets": [
           {
-            "datasource": {
-              "type": "prometheus",
-              "uid": "${DS_PROMETHEUS}"
-            },
+            "datasource": "Prometheus",
             "editorMode": "builder",
             "expr": "reth_stages_headers_unexpected_errors",
             "legendFormat": "Unexpected errors",
@@ -317,10 +255,7 @@
             "refId": "A"
           },
           {
-            "datasource": {
-              "type": "prometheus",
-              "uid": "${DS_PROMETHEUS}"
-            },
+            "datasource": "Prometheus",
             "editorMode": "builder",
             "expr": "reth_stages_headers_validation_errors",
             "hide": false,
@@ -329,10 +264,7 @@
             "refId": "B"
           },
           {
-            "datasource": {
-              "type": "prometheus",
-              "uid": "${DS_PROMETHEUS}"
-            },
+            "datasource": "Prometheus",
             "editorMode": "builder",
             "expr": "reth_stages_headers_timeout_errors",
             "hide": false,
@@ -345,10 +277,7 @@
         "type": "timeseries"
       },
       {
-        "datasource": {
-          "type": "prometheus",
-          "uid": "${DS_PROMETHEUS}"
-        },
+        "datasource": "Prometheus",
         "fieldConfig": {
           "defaults": {
             "color": {
@@ -442,10 +371,7 @@
         },
         "targets": [
           {
-            "datasource": {
-              "type": "prometheus",
-              "uid": "${DS_PROMETHEUS}"
-            },
+            "datasource": "Prometheus",
             "editorMode": "builder",
             "expr": "reth_stages_headers_headers_counter",
             "legendFormat": "Downloaded headers",
@@ -453,10 +379,7 @@
             "refId": "A"
           },
           {
-            "datasource": {
-              "type": "prometheus",
-              "uid": "${DS_PROMETHEUS}"
-            },
+            "datasource": "Prometheus",
             "editorMode": "builder",
             "expr": "rate(reth_stages_headers_headers_counter[$__rate_interval])",
             "hide": false,
@@ -469,10 +392,7 @@
         "type": "timeseries"
       },
       {
-        "datasource": {
-          "type": "prometheus",
-          "uid": "${DS_PROMETHEUS}"
-        },
+        "datasource": "Prometheus",
         "fieldConfig": {
           "defaults": {
             "color": {
@@ -546,10 +466,7 @@
         },
         "targets": [
           {
-            "datasource": {
-              "type": "prometheus",
-              "uid": "${DS_PROMETHEUS}"
-            },
+            "datasource": "Prometheus",
             "editorMode": "builder",
             "expr": "reth_stage_progress",
             "legendFormat": "{{stage}}",
@@ -574,10 +491,7 @@
         "type": "row"
       },
       {
-        "datasource": {
-          "type": "prometheus",
-          "uid": "${DS_PROMETHEUS}"
-        },
+        "datasource": "Prometheus",
         "fieldConfig": {
           "defaults": {
             "color": {
@@ -651,10 +565,7 @@
         },
         "targets": [
           {
-            "datasource": {
-              "type": "prometheus",
-              "uid": "${DS_PROMETHEUS}"
-            },
+            "datasource": "Prometheus",
             "editorMode": "builder",
             "expr": "reth_network_tracked_peers",
             "legendFormat": "Tracked peers",
@@ -666,10 +577,7 @@
         "type": "timeseries"
       },
       {
-        "datasource": {
-          "type": "prometheus",
-          "uid": "${DS_PROMETHEUS}"
-        },
+        "datasource": "Prometheus",
         "fieldConfig": {
           "defaults": {
             "color": {
@@ -743,10 +651,7 @@
         },
         "targets": [
           {
-            "datasource": {
-              "type": "prometheus",
-              "uid": "${DS_PROMETHEUS}"
-            },
+            "datasource": "Prometheus",
             "editorMode": "builder",
             "expr": "reth_network_outgoing_connections",
             "legendFormat": "Outgoing connections",
@@ -754,10 +659,7 @@
             "refId": "A"
           },
           {
-            "datasource": {
-              "type": "prometheus",
-              "uid": "${DS_PROMETHEUS}"
-            },
+            "datasource": "Prometheus",
             "editorMode": "builder",
             "expr": "reth_network_incoming_connections",
             "hide": false,
@@ -766,10 +668,7 @@
             "refId": "B"
           },
           {
-            "datasource": {
-              "type": "prometheus",
-              "uid": "${DS_PROMETHEUS}"
-            },
+            "datasource": "Prometheus",
             "editorMode": "builder",
             "expr": "reth_network_connected_peers",
             "hide": false,
@@ -782,10 +681,7 @@
         "type": "timeseries"
       },
       {
-        "datasource": {
-          "type": "prometheus",
-          "uid": "${DS_PROMETHEUS}"
-        },
+        "datasource": "Prometheus",
         "fieldConfig": {
           "defaults": {
             "color": {
@@ -860,10 +756,7 @@
         },
         "targets": [
           {
-            "datasource": {
-              "type": "prometheus",
-              "uid": "${DS_PROMETHEUS}"
-            },
+            "datasource": "Prometheus",
             "editorMode": "builder",
             "expr": "reth_p2pstream_disconnected_errors",
             "legendFormat": "P2P stream disconnected",
@@ -871,10 +764,7 @@
             "refId": "A"
           },
           {
-            "datasource": {
-              "type": "prometheus",
-              "uid": "${DS_PROMETHEUS}"
-            },
+            "datasource": "Prometheus",
             "editorMode": "builder",
             "expr": "reth_network_pending_session_failures",
             "hide": false,
@@ -883,10 +773,7 @@
             "refId": "B"
           },
           {
-            "datasource": {
-              "type": "prometheus",
-              "uid": "${DS_PROMETHEUS}"
-            },
+            "datasource": "Prometheus",
             "editorMode": "builder",
             "expr": "reth_network_invalid_messages_received",
             "hide": false,
@@ -914,6 +801,6 @@
     "timezone": "",
     "title": "reth",
     "uid": "2k8BXz24k",
-    "version": 8,
+    "version": 6,
     "weekStart": ""
   }
