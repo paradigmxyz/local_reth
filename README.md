@@ -5,9 +5,10 @@ Run the latest [Reth](https://github.com/paradigmxyz/reth) node locally and moni
 1. Install Docker and Docker Compose
 2. Clone this repository `git clone git@github.com:loren/local_reth.git`
 3. `cd local_reth`
-3. Run `docker-compose up -d`
-4. Verify the node has started up by running `docker-compose logs -f reth`
-4. Run `./watch.sh` to see the stats that Prometheus is collecting
+4. Run `docker-compose up -d`
+5. Verify the node has started up by running `docker-compose logs -f reth`
+6. Run `./watch.sh` to see the stats that Prometheus is collecting
+7. Open "http://localhost:3000" in your browser and log into Grafana w/ user: "admin", pass: "admin" to view the "reth" dashboard
 
 ## What's happening
 
@@ -18,7 +19,8 @@ You can override this by setting the `RETH_TIP` environment variable to a differ
 
 The `docker-compose.yml` file also spins up a Prometheus server and a Grafana server. 
 The Prometheus server will scrape the Reth node and the Grafana server will display the metrics in a dashboard.
-TODO: Add a screenshot of the dashboard
+
+![dashboard](dashboard-screenshot.png)
 
 ## Interacting with the data
 
