@@ -8,7 +8,7 @@ services:
       dockerfile: Dockerfile
     volumes:
       - rethdata:$HOME/.local/share/reth/db
-      - rethlogs:$HOME
+      - rethlogs:$HOME/rethlogs
     command: >
       /reth/target/release/reth node 
       --metrics reth:9000 
@@ -17,8 +17,40 @@ services:
     ports:
       - '9000:9000'
 
+  prometheus:
+    restart: always
+    image: prom/prometheus
+    user: root
+    depends_on:
+      - reth
+    ports:
+      - 9090:9090
+    volumes:
+      - ./prometheus/:/etc/prometheus/
+      - prometheusdata:/prometheusdata
+    command:
+      - '--config.file=/etc/prometheus/prometheus.yml'
+      - '--storage.tsdb.path=/prometheusdata'
+
+  grafana:
+    restart: always
+    image: grafana/grafana
+    user: '472'
+    depends_on:
+      - reth
+      - prometheus
+    ports:
+      - 3000:3000
+    volumes:
+      - grafanadata:/var/lib/grafanadata
+      - ./grafana/provisioning/:/etc/grafana/provisioning/
+
 volumes:
   rethdata:
     driver: local
   rethlogs:
+    driver: local
+  prometheusdata:
+    driver: local
+  grafanadata:
     driver: local
