@@ -1,5 +1,5 @@
 # Use rust image as the builder base
-FROM rust:1.66.0-bullseye AS builder
+FROM rust:1.70.0-bullseye AS builder
 
 # Set the build profile to be release
 ARG BUILD_PROFILE=release
