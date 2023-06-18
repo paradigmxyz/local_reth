@@ -12,11 +12,12 @@ services:
     volumes:
       - nodedata:$HOME/nodedata/
     command: >
-      /reth/target/release/reth node 
+      /reth/target/maxperf/reth node 
       --metrics reth:9001
       --datadir $HOME/nodedata/reth/
       --http
       --http.addr=0.0.0.0
+      --http.api=eth,web3,trace,rpc
     ports:
       - '8545:8545'  # http rpc port
       - '9001:9001'  # metrics port
@@ -52,9 +53,12 @@ services:
       - --execution-jwt=$HOME/nodedata/reth/jwt.hex
 
   prometheus:
-    restart: always
+    container_name: prometheus
     image: prom/prometheus
     user: root
+    restart: unless-stopped
+    stop_signal: SIGINT
+    stop_grace_period: 2m
     depends_on:
       - reth
       - lighthouse
@@ -68,11 +72,13 @@ services:
       - '--storage.tsdb.path=/prometheusdata'
 
   grafana:
-    restart: always
+    container_name: grafana
     image: grafana/grafana
     user: '472'
+    restart: unless-stopped
+    stop_signal: SIGINT
+    stop_grace_period: 2m
     depends_on:
-      - reth
       - prometheus
     ports:
       - 3000:3000
