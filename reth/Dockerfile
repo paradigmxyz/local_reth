@@ -1,8 +1,8 @@
 # Use rust image as the builder base
 FROM rust:1.70.0-bullseye AS builder
 
-# Set the build profile to be release
-ARG BUILD_PROFILE=release
+# Set the build profile to be maxperf by default
+ARG BUILD_PROFILE=maxperf
 ENV BUILD_PROFILE $BUILD_PROFILE
 
 # Update and install dependencies
@@ -12,6 +12,6 @@ RUN apt-get update && apt-get -y upgrade && apt-get install -y libclang-dev pkg-
 RUN git clone https://github.com/paradigmxyz/reth
 
 # Build reth
-RUN cd reth && cargo build --all --locked --profile $BUILD_PROFILE
+RUN cd reth && RUSTFLAGS="-C target-cpu=native" cargo build --profile $BUILD_PROFILE --features jemalloc
 
-CMD ["/reth/target/release/reth node"]
+CMD ["/reth/target/maxperf/reth node"]
