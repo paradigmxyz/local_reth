@@ -51,6 +51,7 @@ services:
       - --metrics-address=0.0.0.0
       - --execution-endpoint=http://reth:8551
       - --execution-jwt=$HOME/nodedata/reth/jwt.hex
+      - --disable-upnp
 
   prometheus:
     container_name: prometheus
