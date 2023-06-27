@@ -2,17 +2,16 @@ version: '3.9'
 
 services:
   reth:
+    image: ghcr.io/paradigmxyz/reth
+    pull_policy: always
     container_name: reth
     restart: unless-stopped
     stop_signal: SIGINT
     stop_grace_period: 2m
-    build:
-      context: ./reth
-      dockerfile: Dockerfile
     volumes:
       - nodedata:$HOME/nodedata/
     command: >
-      /reth/target/maxperf/reth node 
+      node
       --metrics reth:9001
       --datadir $HOME/nodedata/reth/
       --http
@@ -39,19 +38,19 @@ services:
       - "9000:9000/tcp"  # p2p port (tcp)
       - "5052:5052/tcp"  # http rpc port
       - "5054:5054/tcp"  # metrics port
-    command:
-      - lighthouse
-      - beacon_node
-      - --network=mainnet
-      - --datadir=$HOME/nodedata/lighthouse/
-      - --http
-      - --http-address=0.0.0.0
-      - --checkpoint-sync-url=https://mainnet.checkpoint.sigp.io
-      - --metrics
-      - --metrics-address=0.0.0.0
-      - --execution-endpoint=http://reth:8551
-      - --execution-jwt=$HOME/nodedata/reth/jwt.hex
-      - --disable-upnp
+    command: > 
+      lighthouse
+      beacon_node
+      --network=mainnet
+      --datadir=$HOME/nodedata/lighthouse/
+      --http
+      --http-address=0.0.0.0
+      --checkpoint-sync-url=https://mainnet.checkpoint.sigp.io
+      --metrics
+      --metrics-address=0.0.0.0
+      --execution-endpoint=http://reth:8551
+      --execution-jwt=$HOME/nodedata/reth/jwt.hex
+      --disable-upnp
 
   prometheus:
     container_name: prometheus
